@@ -22,14 +22,14 @@ La aplicación permite visualizar un catálogo de videojuegos con información b
 
  Feature                                                 Estado 
 
-Consultar videojuegos                                 implementada
-Filtrar videojuegos por género                        Pendiente 
-Consultar el detalle de un videojuego                 Pendiente 
-Agregar videojuegos a favoritos                       Pendiente 
+ver catalogo de  videojuegos                          implementado
+Filtrar videojuegos por género                        en desarrollo
+ver  el detalle de un videojuego                      implementado
+Buscar videojuego                                     Pendiente 
 
 * Estado actual 
 
-En esta primera versión se implementó:
+En la primera versión se implementó:
 
 - Pantalla principal relacionada con la temática de videojuegos.
 - Listado de videojuegos con datos estáticos.
@@ -42,12 +42,27 @@ En esta primera versión se implementó:
 - Imágenes locales para representar cada videojuego.
 
 
+En la segunda versión se implementó:
+
+
+- Se reemplazó ScrollView por FlatList para mostrar el catálogo.
+- Se agregó una barra de categorías.
+- Las categorías son táctiles mediante TouchableOpacity.
+- Se utiliza useState para indicar la categoría seleccionada.
+- Se agregó un indicador visual `●` para mostrar la categoría actual.
+- Se agregó el botón *Ver detalle* en cada videojuego.
+- Se creó una pantalla de detalle.
+- El botón *Ver detalle* permite navegar hacia la información del videojuego seleccionado.
+
 * Datos 
 
 Actualmente cada videojuego contiene:
 
 - Título.
 - Género.
+- Categoría.
 - Plataformas disponibles.
+- Año.
+- Desarrollador.
 - Imagen.
 

@@ -1,10 +1,23 @@
-import { ScrollView, Text, View } from "react-native";
+import { FlatList, Text, View , TouchableOpacity  } from "react-native";
 import styled from "styled-components/native";
+import { useState } from "react";
 
 import TarjetaDeVideojuego from "../components/TarjetaDeVideojuego";
 import videojuegos from "../data/videojuegos";
 
+
+const categorias = [
+  "Acción",
+  "Estrategia",
+  "Terror",
+  "Deportes",
+];
+
+
 export default function PantallaPrincipal() {
+ 
+ const [categoriaActual, setCategoriaActual] = useState("Acción");
+ 
   return (
     <Contenedor>
       <Encabezado>
@@ -13,26 +26,48 @@ export default function PantallaPrincipal() {
         </TituloPrincipal>
 
         <Subtitulo>
-          Descubrí videojuegos y sus plataformas
+          Descubrí videojuegos 
         </Subtitulo>
       </Encabezado>
 
-      <ListaVideojuegos>
-        {videojuegos.map((videojuego) => (
+    <BarraCategorias>
+  {categorias.map((categoria) => (
+    <TouchableOpacity
+      key={categoria}
+      onPress={() => setCategoriaActual(categoria)}
+    >
+      <Categoria>
+        {categoria}
+      </Categoria>
+
+      <Indicador>
+        {categoriaActual === categoria ? "●" : "○"}
+      </Indicador>
+    </TouchableOpacity>
+  ))}
+</BarraCategorias>
+
+
+    <FlatList
+      data={videojuegos}
+      keyExtractor={(item) => item.id.toString()}
+      renderItem={({ item }) => (
           <TarjetaDeVideojuego
-            key={videojuego.id}
-            titulo={videojuego.titulo}
-            genero={videojuego.genero}
-            plataformas={videojuego.plataformas}
-            imagen={videojuego.imagen}
+          titulo={item.titulo}
+          genero={item.genero}
+          plataformas={item.plataformas}
+          año={item.año}
+          desarrollador={item.desarrollador}
+          descripcion={item.descripcion}
+          imagen={item.imagen}
           />
-        ))}
-      </ListaVideojuegos>
+        )}
+      />       
     </Contenedor>
   );
 }
 
-const Contenedor = styled(ScrollView)`
+const Contenedor = styled(View)`
   flex: 1;
   background-color: #f2f2f2;
 `;
@@ -60,4 +95,18 @@ const ListaVideojuegos = styled(View)`
   max-width: 700px;
   align-self: center;
   padding: 0 20px 40px 20px;
+`;
+
+const BarraCategorias = styled(View)`
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 10px;
+`;
+
+const Categoria = styled(Text)`
+  text-align: center;
+`;
+
+const Indicador = styled(Text)`
+  text-align: center;
 `;

@@ -1,11 +1,15 @@
-import { ImageSourcePropType } from "react-native";
+import { ImageSourcePropType ,  TouchableOpacity  } from "react-native";
 import styled from "styled-components/native";
+import { useRouter } from "expo-router";
 
 type PropiedadesTarjeta = {
   titulo: string;
   genero: string;
   plataformas: string;
   imagen: ImageSourcePropType;
+  año: string;
+  desarrollador: string;
+  descripcion: string;
 };
 
 export default function TarjetaDeVideojuego({
@@ -13,7 +17,13 @@ export default function TarjetaDeVideojuego({
   genero,
   plataformas,
   imagen,
+  año,
+  desarrollador,
+  descripcion,
 }: PropiedadesTarjeta) {
+
+  const router = useRouter();
+
   return (
     <Tarjeta>
       <ImagenVideojuego source={imagen} />
@@ -22,10 +32,44 @@ export default function TarjetaDeVideojuego({
         <Titulo>{titulo}</Titulo>
         <Genero>{genero}</Genero>
         <Plataformas>{plataformas}</Plataformas>
+
+      <BotonDetalle
+      onPress={() =>
+        router.push({
+        pathname: "/detalle",
+        params: {
+          titulo,
+          genero,
+          plataformas,
+          año,
+          desarrollador,
+          descripcion,
+        },
+      })
+    }
+  >
+  <TextoBoton>Ver detalle</TextoBoton>
+</BotonDetalle>
+
       </Informacion>
     </Tarjeta>
   );
 }
+
+const BotonDetalle = styled(TouchableOpacity)`
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #222222;
+  border-radius: 8px;
+`;
+
+const TextoBoton = styled.Text`
+  color: white;
+  text-align: center;
+  font-weight: bold;
+`;
+
+
 
 const Tarjeta = styled.View`
   background-color: white;
