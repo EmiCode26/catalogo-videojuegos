@@ -1,8 +1,9 @@
 import { Text, View } from "react-native";
 import styled from "styled-components/native";
-import { useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams ,  useRouter  } from "expo-router";
 export default function Detalle() {
- 
+    const router = useRouter();
+
     const {
     titulo,
     genero,
@@ -14,13 +15,23 @@ export default function Detalle() {
 
   
     return (
+
     <Contenedor>
+
+     <BotonVolver onPress={() => router.back()}>
+     <TextoBoton>atras</TextoBoton>
+     </BotonVolver>
+
       <Titulo>{titulo}</Titulo>
 
       <Texto>Género: {genero}</Texto>
       <Texto>Plataformas: {plataformas}</Texto>
       <Texto>Año: {año}</Texto>
       <Texto>Desarrollador: {desarrollador}</Texto>
+
+      <Subtitulo>¿De qué va?</Subtitulo>
+      <Descripcion>{descripcion}</Descripcion>
+
     </Contenedor>
   );
 }
@@ -50,4 +61,13 @@ const Subtitulo = styled(Text)`
 
 const Descripcion = styled(Text)`
   font-size: 16px;
+`;
+
+const BotonVolver = styled.TouchableOpacity`
+  margin-bottom: 20px;
+`;
+
+const TextoBoton = styled.Text`
+  font-size: 16px;
+  font-weight: bold;
 `;

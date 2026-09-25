@@ -52,7 +52,11 @@ En la segunda versión se implementó:
 - Se agregó un indicador visual `●` para mostrar la categoría actual.
 - Se agregó el botón *Ver detalle* en cada videojuego.
 - Se creó una pantalla de detalle.
+- La pantalla de detalle muestra título, género, plataformas, año, desarrollador y descripción.
 - El botón *Ver detalle* permite navegar hacia la información del videojuego seleccionado.
+- Se agregó la sección *¿De qué va?* con una descripción de cada videojuego.
+- Se agregó un botón *Volver* para regresar al catálogo.
+
 
 * Datos 
 
@@ -64,5 +68,6 @@ Actualmente cada videojuego contiene:
 - Plataformas disponibles.
 - Año.
 - Desarrollador.
+- Descripción.
 - Imagen.
 

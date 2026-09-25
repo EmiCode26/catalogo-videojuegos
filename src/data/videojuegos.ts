@@ -18,7 +18,7 @@ const videojuegos = [
     plataformas: "PC - PlayStation - Xbox",
     año:"2018",
     desarrollador:"Rockstar Games",
-    descripcion:"se trata de sobrevivir en el viejo oeste.a las 6 de las mañana te uniras a una banda para robar un banco , por la tarde cuando pierdas jugando poker con unos viejos en una cabaña alejada de dios le meteras 4 tiros a los viejo para recuperar el poco dinero que tenias y por la noche simplemente iras a caballo recorriendo el mundo  visitando los distintos pueblos o mirando el atardecer o incluso pescar para despejar la mente ante tal mundo caotico que te toco vivir ",
+    descripcion:"Elegís una facción, armás ejércitos enormes y tratás de convertirte en la potencia más fuerte del mapa. Podés conquistar territorios, hacer alianzas o mandar todo al caos en batallas gigantes. Básicamente: diplomacia cuando se puede, guerra cuando no ",
     imagen: require("../../assets/images/red-dead.png"),
   },
   {
