@@ -1,4 +1,13 @@
-import { FlatList, Text, View , TouchableOpacity  } from "react-native";
+
+import {
+  FlatList,
+  Text,
+  View,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
+
+
 import styled from "styled-components/native";
 import { useState } from "react";
 
@@ -6,11 +15,13 @@ import TarjetaDeVideojuego from "../components/TarjetaDeVideojuego";
 import videojuegos from "../data/videojuegos";
 
 
+
 const categorias = [
   "Acción",
   "Estrategia",
   "Terror",
-  "Deportes",
+  "Carreras",
+  "RPG",
 ];
 
 
@@ -18,6 +29,8 @@ export default function PantallaPrincipal() {
  
  const [categoriaActual, setCategoriaActual] = useState("Acción");
  
+ const [busqueda, setBusqueda] = useState("");
+
   return (
     <Contenedor>
       <Encabezado>
@@ -30,7 +43,14 @@ export default function PantallaPrincipal() {
         </Subtitulo>
       </Encabezado>
 
-    <BarraCategorias>
+
+  <Buscador
+    placeholder="Buscar videojuego"
+    value={busqueda}
+    onChangeText={setBusqueda}
+    />
+
+  <BarraCategorias>
   {categorias.map((categoria) => (
     <TouchableOpacity
       key={categoria}
@@ -48,11 +68,13 @@ export default function PantallaPrincipal() {
 </BarraCategorias>
 
 
-    <FlatList
-      data={videojuegos}
-      keyExtractor={(item) => item.id.toString()}
-      renderItem={({ item }) => (
-          <TarjetaDeVideojuego
+  <FlatList
+  data={videojuegos}
+  keyExtractor={(item) => item.id.toString()}
+  renderItem={({ item }) =>
+    busqueda === "" ? (
+      item.categoria === categoriaActual ? (
+        <TarjetaDeVideojuego
           titulo={item.titulo}
           genero={item.genero}
           plataformas={item.plataformas}
@@ -60,10 +82,23 @@ export default function PantallaPrincipal() {
           desarrollador={item.desarrollador}
           descripcion={item.descripcion}
           imagen={item.imagen}
-          />
-        )}
-      />       
-    </Contenedor>
+        />
+      ) : null
+    ) : item.titulo === busqueda ? (
+      <TarjetaDeVideojuego
+        titulo={item.titulo}
+        genero={item.genero}
+        plataformas={item.plataformas}
+        año={item.año}
+        desarrollador={item.desarrollador}
+        descripcion={item.descripcion}
+        imagen={item.imagen}
+      />
+    ) : null
+  }
+/>
+
+ </Contenedor>
   );
 }
 
@@ -90,15 +125,10 @@ const Subtitulo = styled(Text)`
   margin-top: 6px;
 `;
 
-const ListaVideojuegos = styled(View)`
-   width: 100%;
-  max-width: 700px;
-  align-self: center;
-  padding: 0 20px 40px 20px;
-`;
 
 const BarraCategorias = styled(View)`
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
   padding: 10px;
 `;
@@ -109,4 +139,11 @@ const Categoria = styled(Text)`
 
 const Indicador = styled(Text)`
   text-align: center;
+`;
+
+const Buscador = styled(TextInput)`
+  background-color: white;
+  margin: 0 20px 10px 20px;
+  padding: 12px;
+  border-radius: 8px;
 `;

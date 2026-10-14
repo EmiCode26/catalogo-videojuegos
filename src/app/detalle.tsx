@@ -18,7 +18,7 @@ export default function Detalle() {
 
     <Contenedor>
 
-     <BotonVolver onPress={() => router.back()}>
+     <BotonVolver onPress={() => router.replace("/")}>
      <TextoBoton>atras</TextoBoton>
      </BotonVolver>
 

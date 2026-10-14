@@ -23,9 +23,9 @@ La aplicación permite visualizar un catálogo de videojuegos con información b
  Feature                                                 Estado 
 
 ver catalogo de  videojuegos                          implementado
-Filtrar videojuegos por género                        en desarrollo
+Filtrar videojuegos por género                        implementado
 ver  el detalle de un videojuego                      implementado
-Buscar videojuego                                     Pendiente 
+Buscar videojuego                                     en desarrollo
 
 * Estado actual 
 
