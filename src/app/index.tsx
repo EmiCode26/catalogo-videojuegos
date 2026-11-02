@@ -7,7 +7,7 @@ import {
   TextInput,
 } from "react-native";
 
-
+import { useVideojuegosStore } from "../store/videojuegosStore";
 import styled from "styled-components/native";
 import { useState } from "react";
 
@@ -27,9 +27,21 @@ const categorias = [
 
 export default function PantallaPrincipal() {
  
- const [categoriaActual, setCategoriaActual] = useState("Acción");
- 
- const [busqueda, setBusqueda] = useState("");
+  const categoriaActual = useVideojuegosStore(
+  (state) => state.categoriaActual
+  );
+
+  const busqueda = useVideojuegosStore(
+  (state) => state.busqueda
+  );
+
+  const cambiarCategoria = useVideojuegosStore(
+  (state) => state.cambiarCategoria
+  );
+
+  const cambiarBusqueda = useVideojuegosStore(
+  (state) => state.cambiarBusqueda
+  );
 
   return (
     <Contenedor>
@@ -45,16 +57,17 @@ export default function PantallaPrincipal() {
 
 
   <Buscador
-    placeholder="Buscar videojuego"
+    testID="input-busqueda"
+    placeholder="Buscar un videojuego"
     value={busqueda}
-    onChangeText={setBusqueda}
+    onChangeText={cambiarBusqueda}
     />
 
   <BarraCategorias>
   {categorias.map((categoria) => (
     <TouchableOpacity
       key={categoria}
-      onPress={() => setCategoriaActual(categoria)}
+      onPress={() => cambiarCategoria(categoria)}
     >
       <Categoria>
         {categoria}
@@ -70,6 +83,7 @@ export default function PantallaPrincipal() {
 
   <FlatList
   data={videojuegos}
+  extraData={{ categoriaActual, busqueda }}
   keyExtractor={(item) => item.id.toString()}
   renderItem={({ item }) =>
     busqueda === "" ? (
@@ -84,7 +98,7 @@ export default function PantallaPrincipal() {
           imagen={item.imagen}
         />
       ) : null
-    ) : item.titulo === busqueda ? (
+    ) : item.titulo.toLowerCase().includes(busqueda.toLowerCase()) ? (
       <TarjetaDeVideojuego
         titulo={item.titulo}
         genero={item.genero}

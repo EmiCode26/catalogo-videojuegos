@@ -48,7 +48,7 @@ export default function TarjetaDeVideojuego({
       })
     }
   >
-  <TextoBoton>Ver detalle</TextoBoton>
+  <TextoBoton>informacion</TextoBoton>
 </BotonDetalle>
 
       </Informacion>

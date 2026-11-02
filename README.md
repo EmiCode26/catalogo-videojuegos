@@ -17,6 +17,10 @@ La aplicación permite visualizar un catálogo de videojuegos con información b
 - Expo
 - TypeScript
 - Styled Components
+- zustan
+- jest
+- react native testing library
+
 
 * Features previstas
 
@@ -25,7 +29,7 @@ La aplicación permite visualizar un catálogo de videojuegos con información b
 ver catalogo de  videojuegos                          implementado
 Filtrar videojuegos por género                        implementado
 ver  el detalle de un videojuego                      implementado
-Buscar videojuego                                     en desarrollo
+Buscar videojuego                                     implementado
 
 * Estado actual 
 
@@ -56,6 +60,22 @@ En la segunda versión se implementó:
 - El botón *Ver detalle* permite navegar hacia la información del videojuego seleccionado.
 - Se agregó la sección *¿De qué va?* con una descripción de cada videojuego.
 - Se agregó un botón *Volver* para regresar al catálogo.
+
+en la 3 version se impelmento
+- se expandio el catalogo de 4 juegos a 20 juegos para poder darle mas variedad para el cambio de genero 
+- se completo el feature del buscador y se reajusto el de feature de genero
+
+En la cuarta versión se implementó:
+
+- Se mejoró el buscador para que fuera menos basico(ya no distinge mayuscula y minuscula).
+- Se incorporó Zustand para manejar el estado global de la aplicación.
+- Se creó un store para guardar la categoría seleccionada y el texto ingresado en el buscador.
+- Se incorporó Jest para realizar pruebas automáticas y se configuro con jest-expo
+- Se incorporó React Native Testing Library para probar componentes e interacciones del usuario.
+- Se agregó un test unitario para comprobar la lógica de búsqueda parcial de videojuegos.
+- Se agregó un test del componente TarjetaDeVideojuego, verificando que el título se muestre correctamente.
+- Se agregó un test de integración del buscador, simulando que el usuario escribe en el campo de búsqueda y comprobando que aparezca el videojuego correspondiente.
+- Actualmente los tres tests implementados se ejecutan correctamente(npm test).
 
 
 * Datos 
