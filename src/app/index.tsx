@@ -89,6 +89,7 @@ export default function PantallaPrincipal() {
     busqueda === "" ? (
       item.categoria === categoriaActual ? (
         <TarjetaDeVideojuego
+          id={item.id}
           titulo={item.titulo}
           genero={item.genero}
           plataformas={item.plataformas}
@@ -100,6 +101,7 @@ export default function PantallaPrincipal() {
       ) : null
     ) : item.titulo.toLowerCase().includes(busqueda.toLowerCase()) ? (
       <TarjetaDeVideojuego
+        id={item.id}
         titulo={item.titulo}
         genero={item.genero}
         plataformas={item.plataformas}

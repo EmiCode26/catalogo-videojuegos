@@ -33,7 +33,7 @@ Buscar videojuego                                     implementado
 
 * Estado actual 
 
-En la primera versión se implementó:
+En la 1 versión se implementó:
 
 - Pantalla principal relacionada con la temática de videojuegos.
 - Listado de videojuegos con datos estáticos.
@@ -46,7 +46,7 @@ En la primera versión se implementó:
 - Imágenes locales para representar cada videojuego.
 
 
-En la segunda versión se implementó:
+En la 2 versión se implementó:
 
 
 - Se reemplazó ScrollView por FlatList para mostrar el catálogo.
@@ -65,7 +65,7 @@ en la 3 version se impelmento
 - se expandio el catalogo de 4 juegos a 20 juegos para poder darle mas variedad para el cambio de genero 
 - se completo el feature del buscador y se reajusto el de feature de genero
 
-En la cuarta versión se implementó:
+En la 4 versión se implementó:
 
 - Se mejoró el buscador para que fuera menos basico(ya no distinge mayuscula y minuscula).
 - Se incorporó Zustand para manejar el estado global de la aplicación.
@@ -76,6 +76,24 @@ En la cuarta versión se implementó:
 - Se agregó un test del componente TarjetaDeVideojuego, verificando que el título se muestre correctamente.
 - Se agregó un test de integración del buscador, simulando que el usuario escribe en el campo de búsqueda y comprobando que aparezca el videojuego correspondiente.
 - Actualmente los tres tests implementados se ejecutan correctamente(npm test).
+
+
+
+En la quinta versión se implementó:
+
+- Se incorporaron rutas dinámicas con Expo Router para acceder al detalle de cada videojuego utilizando su id.
+- Se creó la ruta dinámica detalle/[id].tsx.
+- Se utilizó useLocalSearchParams para obtener el id del videojuego seleccionado.
+- La pantalla de detalle busca el videojuego correspondiente a partir de ese id.
+- Se agregó una animación al botón *informacion* utilizando Animated.
+- Al presionar el botón, este cambia de escala antes de navegar al detalle.
+- Se utilizaron Animated.Value, Animated.sequence y Animated.timing.
+- Se agregó la función *Compartir videojuego*.
+- Se utilizó react-native-view-shot para capturar la información del videojuego como una imagen.
+- Se utilizó expo-sharing para compartir la imagen de detalle del juego  desde el dispositivo.
+- La función de compartir fue probada correctamente en mi celular Android mediante Expo Go version sdk 57.
+
+
 
 
 * Datos 
